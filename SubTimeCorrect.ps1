@@ -4,8 +4,7 @@ $openFileDialog.initialDirectory = [System.IO.Directory]::GetCurrentDirectory()
 $openFileDialog.title = "Select the subtitle file:"   
 $openFileDialog.filter = "All files (*.*)| *.*"   
 $openFileDialog.ShowHelp = $True   
-$result = $openFileDialog.ShowDialog()   # Display the Dialog / Wait for user response 
-    # in ISE you may have to alt-tab or minimize ISE to see dialog box
+$result = $openFileDialog.ShowDialog()
 $FilePath=$OpenFileDialog.filename
 #echo $FilePath
 $sub=Get-Content $FilePath
