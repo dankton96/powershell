@@ -7,4 +7,6 @@ $openFileDialog.ShowHelp = $True
 $result = $openFileDialog.ShowDialog()
 $FilePath=$OpenFileDialog.filename
 #echo $FilePath
-$sub=Get-Content $FilePath
+$lines2calc=Get-Content $FilePath | Select-string -Pattern "\d\d:\d\d:\d\d\,\d\d\d ---> \d\d:\d\d:\d\d\,\d\d\d"
+echo $lines2calc
+
