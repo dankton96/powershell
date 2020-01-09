@@ -9,5 +9,4 @@ $result = $openFileDialog.ShowDialog()
 $FilePath=$OpenFileDialog.filename
 #echo $FilePath
 $lines2calc=Get-Content $FilePath | Select-string -Pattern "\d\d:\d\d:\d\d\,\d\d\d --> \d\d:\d\d:\d\d\,\d\d\d"
-echo $lines2calc
-
+echo $lines2calc.LineNumber
