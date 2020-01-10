@@ -9,4 +9,10 @@ $result = $openFileDialog.ShowDialog()
 $FilePath=$OpenFileDialog.filename
 #echo $FilePath
 $lines2calc=Get-Content $FilePath | Select-string -Pattern "\d\d:\d\d:\d\d\,\d\d\d --> \d\d:\d\d:\d\d\,\d\d\d"
-echo $lines2calc.LineNumber
+#$lines2calc.GetType()
+#echo $lines2calc.LineNumber
+ChangeLine=[n for n in $lines2calc.LineNumber]
+#foreach ($l in )
+#{
+#	echo 
+#}
