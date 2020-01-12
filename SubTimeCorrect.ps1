@@ -20,10 +20,3 @@ foreach ($l in $lines2calc)
 	$t2=$FileContent[$l.LineNumber-1].substring(17)
 	echo ($t1+'\t'+$t2)
 }
-#foreach ($l in $lines2calc)
-#{
-#	$s=ToString($lines2calc[$l])
-#	$t1=$s.substring(0,12)
-#	$t2=$s.substring(17)
-#	echo $t1+'\t'+$t2
-#}
