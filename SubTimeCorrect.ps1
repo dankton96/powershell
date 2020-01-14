@@ -1,4 +1,4 @@
-Add-Type -AssemblyName 'System.Windows.Forms'
+Add-Type -AssemblyName 'System.Windows.Forms','System.DateTime'
 cls
 $openFileDialog = New-Object windows.forms.openfiledialog   
 $openFileDialog.initialDirectory = [System.IO.Directory]::GetCurrentDirectory()   
@@ -16,11 +16,12 @@ $lines2calc=Get-Content $FilePath | Select-string -Pattern "\d\d:\d\d:\d\d\,\d\d
 foreach ($l in $lines2calc)
 {
 #	echo $FileContent[$l.LineNumber-1]
-	$t1s=$FileContent[$l.LineNumber-1].substring(0,12)
-	$t2s=$FileContent[$l.LineNumber-1].substring(17)
-	$t1=3600*([float]$t1s.substring(0,2))+60*([float]$t1s.substring(3,2))+([float]($t1s.substring(6) -replace ',','.'))
-	$t2=3600*([float]$t2s.substring(0,2))+60*([float]$t2s.substring(3,2))+([float]($t2s.substring(6) -replace ',','.'))
-	#$t1=[float]$t1s.substring(6)
-	#$t2=[float]$t2s.substring(6)
-	echo $t1'-------'$t2
+	$t1s="10/01/1000 "+$FileContent[$l.LineNumber-1].substring(0,12)
+	$t2s="10/01/1000 "+$FileContent[$l.LineNumber-1].substring(17)
+	#10/01/1000 00:40:13,372
+	#$t1=Get-Date -Date(([Int32]$t1s.substring(6,4)),([Int32]$t1s.substring(3,2)),([Int32]$t1s.substring(0,2)),([Int32]$t1s.substring(11,2)),([Int32]$t1s.substring(14,2)),([Int32]$t1s.substring(17,2)),([Int32]$t1s.substring(20,3)))
+	#$t2=Get-Date -Date(([Int32]$t2s.substring(6,4)),([Int32]$t2s.substring(3,2)),([Int32]$t2s.substring(0,2)),([Int32]$t2s.substring(11,2)),([Int32]$t2s.substring(14,2)),([Int32]$t2s.substring(17,2)),([Int32]$t2s.substring(20,3)))
+	$t1=Get-Date -Date $t1s.substring(0,18)
+	$t2=Get-Date -Date $t2s.substring(0,18)
+	echo $t1'------'$t2
 }
